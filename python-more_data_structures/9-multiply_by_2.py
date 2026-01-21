@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Module: 9-multiply_by_2
-Contains a function that returns a new dictionary with all values multiplied by 2.
+Return a new dictionary where all values are multiplied by 2.
 """
 
 
