@@ -5,7 +5,7 @@
 
 
 def divisible_by_2(my_list=[]):
-    """Return a list of booleans indicating multiples of 2 in the input list."""
+    """Return a list of True/False for divisibility by 2."""
     result = []
     for num in my_list:
         result.append(num % 2 == 0)
