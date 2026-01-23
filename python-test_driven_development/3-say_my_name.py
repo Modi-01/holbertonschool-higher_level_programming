@@ -3,11 +3,11 @@
 
 
 def say_my_name(first_name, last_name=""):
-    """Prints "My name is <first name> <last name>".
+    """Print "My name is <first name> <last name>".
 
     Args:
-        first_name (str): First name.
-        last_name (str): Last name (optional).
+        first_name (str): The first name.
+        last_name (str): The last name (optional).
 
     Raises:
         TypeError: If first_name is not a string.
