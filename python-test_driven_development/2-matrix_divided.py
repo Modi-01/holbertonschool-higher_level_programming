@@ -3,7 +3,10 @@
 
 
 def matrix_divided(matrix, div):
-    """Divide all elements of a matrix by div and round results to 2 decimals."""
+    """Divide all elements of a matrix by div.
+
+    The result is rounded to 2 decimal places.
+    """
     err_matrix = "matrix must be a matrix (list of lists) of integers/floats"
     err_row = "Each row of the matrix must have the same size"
 
