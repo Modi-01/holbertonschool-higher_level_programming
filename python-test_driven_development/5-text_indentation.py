@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """
-This module defines the function text_indentation.
+This module contains the function text_indentation.
 
 The text_indentation function prints a text with 2 new lines after each
-of these characters: '.', '?' and ':'.
+of these characters: '.', '?' , ':' and '!' and ensures no space at the
+beginning or at the end of each printed line.
 """
 
 
 def text_indentation(text):
-    """Prints a text with 2 new lines after each of '.', '?' and ':'.
+    """Prints a text with 2 new lines after '.', '?', ':', and '!'.
 
     Args:
         text (str): The text to print.
@@ -16,17 +17,17 @@ def text_indentation(text):
     Raises:
         TypeError: If text is not a string.
     """
-    if type(text) is not str:
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
+    delimiters = ".?:!"
     chunk = ""
-    for ch in text:
-        if ch in ".?:":
-            print(chunk.strip(" "), end="")
-            print(ch)
-            print()
-            chunk = ""
-        else:
-            chunk += ch
 
-    print(chunk.strip(" "), end="")
+    for ch in text:
+        chunk += ch
+        if ch in delimiters:
+            print(chunk.strip(), end="\n\n")
+            chunk = ""
+
+    if chunk:
+        print(chunk.strip(), end="")
