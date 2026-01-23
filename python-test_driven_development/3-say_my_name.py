@@ -3,11 +3,11 @@
 
 
 def say_my_name(first_name, last_name=""):
-    """Print 'My name is <first name> <last name>'.
+    """Prints: My name is <first_name> <last_name>.
 
     Args:
-        first_name (str): The first name.
-        last_name (str): The last name (optional).
+        first_name (str): First name.
+        last_name (str): Last name.
 
     Raises:
         TypeError: If first_name or last_name is not a string.
@@ -17,5 +17,4 @@ def say_my_name(first_name, last_name=""):
     if type(last_name) is not str:
         raise TypeError("last_name must be a string")
 
-    # Important: keep the space even if last_name is empty (checker expects it)
     print("My name is {} {}".format(first_name, last_name))
