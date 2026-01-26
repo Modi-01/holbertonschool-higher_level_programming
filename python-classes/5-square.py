@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a Square class that can print itself with the '#' character."""
+"""Defines a Square class that can print itself with the # character."""
 
 
 class Square:
@@ -25,13 +25,12 @@ class Square:
 
     def area(self):
         """Return the current area of the square."""
-        return self.__size * self.__size
+        return self.size * self.size
 
     def my_print(self):
-        """Print the square using '#' characters, or an empty line if size is 0."""
-        if self.__size == 0:
+        """Print the square using # characters, or an empty line if size is 0."""
+        if self.size == 0:
             print()
-            return
-
-        for _ in range(self.__size):
-            print("#" * self.__size)
+        else:
+            for _ in range(self.size):
+                print("#" * self.size)
