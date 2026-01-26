@@ -1,37 +1,40 @@
 #!/usr/bin/python3
-"""Defines a Square class with size validation, area computation, and printing."""
+"""Class that defines a square by its size"""
 
 
 class Square:
-    """Represents a square and provides methods to work with its size."""
-
+    """Represents a square"""
     def __init__(self, size=0):
-        """Initialize a new Square with an optional size."""
+        """
+        Args:
+            size (int): square size
+        """
         self.size = size
 
     @property
     def size(self):
-        """Retrieve the size of the square."""
+        """Retrieve size"""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Set the square size after validating type and value."""
+        """Type and value validation"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
     def area(self):
-        """Return the current area of the square."""
-        return self.__size * self.__size
+        """Returns the current square area"""
+        return self.__size ** 2
 
     def my_print(self):
-        """Print the square using #, or a blank line if size is 0."""
+        """Prints in stdout the square with the character #"""
         if self.__size == 0:
-            print("")
-            return
-
-        for _ in range(self.__size):
-            print("#" * self.__size)
+            print()
+        else:
+            for _ in range(self.__size):
+                for _ in range(self.__size):
+                    print("#", end="")
+                print()
