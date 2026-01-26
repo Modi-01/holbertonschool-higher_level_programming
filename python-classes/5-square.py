@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Defines a Square class that can print itself with the # character."""
-
+"""Defines a Square class with size validation, area computation, and printing."""
 
 class Square:
-    """Represents a square with a private validated size attribute."""
+    """This class defines a square and provides methods to work with its size."""
 
     def __init__(self, size=0):
-        """Initialize a Square instance with a validated size value."""
+        """Initialize a new Square instance with an optional validated size."""
         self.size = size
 
     @property
@@ -16,7 +15,7 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Set the size of the square after validating its type and value."""
+        """Set the size of the square after validating type and value rules."""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         if value < 0:
@@ -25,12 +24,13 @@ class Square:
 
     def area(self):
         """Return the current area of the square."""
-        return self.size * self.size
+        return self.__size ** 2
 
     def my_print(self):
-        """Print the square using # characters, or an empty line if size is 0."""
-        if self.size == 0:
+        """Print the square using #, or print an empty line when size is zero."""
+        if self.__size == 0:
             print()
-        else:
-            for _ in range(self.size):
-                print("#" * self.size)
+            return
+
+        for _ in range(self.__size):
+            print("#" * self.__size)
