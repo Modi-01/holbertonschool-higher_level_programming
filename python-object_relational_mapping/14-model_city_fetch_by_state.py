@@ -1,28 +1,40 @@
 #!/usr/bin/python3
-"""print all city object"""
+"""Prints all City objects from the database, with their corresponding State."""
+
 import sys
-from model_state import Base, State
-from model_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from model_state import State
+from model_city import City
 
-if __name__ == '__main__':
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
-                           .format(sys.argv[1],
-                                   sys.argv[2],
-                                   sys.argv[3]))
 
-    Base.metadata.create_all(engine)
+def main():
+    """Connects to the database and prints cities ordered by cities.id."""
+    if len(sys.argv) != 4:
+        sys.exit(1)
 
-    Session = sessionmaker(engine)
-    session = Session()
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    cities = (
-        session.query(City, State)
-        .filter(City.state_id == State.id)
-        .order_by(City.id).all()
+    engine = create_engine(
+        "mysql+mysqldb://{}:{}@localhost/{}".format(username, password, db_name),
+        pool_pre_ping=True
     )
 
-    for cities, state in cities:
-        print("{}: ({}) {}".format(state.name, cities.id, cities.name))
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    results = (session.query(State.name, City.id, City.name)
+               .join(State, City.state_id == State.id)
+               .order_by(City.id)
+               .all())
+
+    for state_name, city_id, city_name in results:
+        print("{}: ({}) {}".format(state_name, city_id, city_name))
+
     session.close()
+
+
+if __name__ == "__main__":
+    main()
